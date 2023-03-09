@@ -14,7 +14,6 @@ import LoginIcon from '@mui/icons-material/Login';
 import HomeIcon from '@mui/icons-material/Home';
 
 // custom
-import theme from '../../constants/theme';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -57,7 +56,6 @@ function Header() {
 
   return (
     <>
-      
       <Box
         sx={{
           height: '100%',
@@ -91,10 +89,10 @@ function Header() {
         placeholder="Search anything…"
         startDecorator={<SearchRoundedIcon color="primary" />}
         endDecorator={
-          <IconButton variant="outlined" size="sm" color="neutral" 
-          onClick={() => {
-            setSearch('');
-          }}
+          <IconButton variant="outlined" size="sm" color="neutral"
+            onClick={() => {
+              setSearch('');
+            }}
           >
             /
           </IconButton>
