@@ -52,6 +52,8 @@ function Header() {
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
+  const [search, setSearch] = React.useState('');
+
   const navegate = useNavigate();
 
   return (
@@ -90,7 +92,11 @@ function Header() {
         placeholder="Search anything…"
         startDecorator={<SearchRoundedIcon color="primary" />}
         endDecorator={
-          <IconButton variant="outlined" size="sm" color="neutral">
+          <IconButton variant="outlined" size="sm" color="neutral" 
+          onClick={() => {
+            setSearch('');
+          }}
+          >
             /
           </IconButton>
         }
@@ -100,6 +106,10 @@ function Header() {
             xs: 'none',
             sm: 'flex',
           },
+        }}
+        value={search}
+        onChange={(e) => {
+          setSearch(e.target.value);
         }}
       />
       <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1.5 }}>
@@ -111,7 +121,7 @@ function Header() {
         >
           <SearchRoundedIcon />
         </IconButton>
-        <ColorSchemeToggle />
+        {/* <ColorSchemeToggle /> */}
         {!sessionStorage.getItem('user') &&
           <IconButton
             size="sm"
