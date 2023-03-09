@@ -10,9 +10,8 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import MenuIcon from '@mui/icons-material/Menu';
-import ViewDayIcon from '@mui/icons-material/ViewDay';
 import LoginIcon from '@mui/icons-material/Login';
-import SearchIcon from '@mui/icons-material/Search';
+import HomeIcon from '@mui/icons-material/Home';
 
 // custom
 import theme from '../../constants/theme';
@@ -81,10 +80,10 @@ function Header() {
           variant="solid"
           sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
         >
-          <ViewDayIcon />
+          <HomeIcon />
         </IconButton>
         <Typography component="h1" fontWeight="xl" minWidth={100}>
-          Feed
+          Home
         </Typography>
       </Box>
       <Input
