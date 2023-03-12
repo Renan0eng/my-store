@@ -9,11 +9,6 @@ function Root(props) {
       sx={[
         {
           display: 'grid',
-          gridTemplateColumns: {
-            xs: '1fr',
-            sm: 'minmax(64px, 200px) minmax(450px, 1fr)',
-            md: 'minmax(160px, 300px) minmax(500px, 1fr) minmax(160px, 300px)',
-          },
           gridTemplateRows: '64px 1fr',
           minHeight: '100vh',
         },
@@ -144,6 +139,26 @@ function SideDrawer({
   );
 }
 
+function Content({ children, ...props }) {
+  return (
+    <Box
+      {...props}
+      sx={[
+        {
+          p: 2,
+          bgcolor: 'background.surface',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        },
+        ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+      ]}
+    >
+      {children}
+    </Box>
+  );
+}
+
 export default {
   Root,
   Header,
@@ -151,4 +166,5 @@ export default {
   SidePane,
   SideDrawer,
   Main,
+  Content,
 };

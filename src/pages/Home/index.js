@@ -11,8 +11,9 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
-import ViewDayIcon from '@mui/icons-material/ViewDay';
+import HomeIcon from '@mui/icons-material/HomeOutlined';
 import LoginIcon from '@mui/icons-material/Login';
 
 // custom
@@ -59,7 +60,7 @@ export default function FeedExample() {
   const [unreadMenu, setUnreadMenu] = React.useState(false);
   const [everythingMenu, setEverythingMenu] = React.useState(false);
   const [admin, setAdmin] = React.useState(true);
-  
+
 
   return (
     <CssVarsProvider disableTransitionOnChange theme={theme}>
@@ -100,10 +101,13 @@ export default function FeedExample() {
               variant="solid"
               sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
             >
-              <ViewDayIcon />
+              <HomeIcon />
             </IconButton>
-            <Typography component="h1" fontWeight="xl" minWidth={100}>
-              Home
+            <Typography component="h1" fontWeight="xl" minWidth={130} sx={{ display: { xs: 'none', sm: 'inline-flex' } }}>
+              Gabriel Do Cell
+            </Typography>
+            <Typography component="h1" fontWeight="xl" sx={{ display: { sm: 'none' } }}>
+              GabrielDC
             </Typography>
           </Box>
           <Input
@@ -131,6 +135,14 @@ export default function FeedExample() {
               sx={{ display: { xs: 'inline-flex', sm: 'none' } }}
             >
               <SearchRoundedIcon />
+            </IconButton>
+
+            <IconButton
+              size="sm"
+              variant="outlined"
+              color="primary"
+            >
+              <ShoppingBagOutlinedIcon />
             </IconButton>
 
             {admin &&
@@ -167,7 +179,7 @@ export default function FeedExample() {
               >
                 <LoginIcon />
               </IconButton>}
-              {!sessionStorage.getItem('user') &&
+            {!sessionStorage.getItem('user') &&
               <IconButton
                 size="sm"
                 variant="solid"
@@ -180,6 +192,49 @@ export default function FeedExample() {
               </IconButton>}
           </Box>
         </Layout.Header>
+        <Layout.Content>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 1.5,
+              alignItems: 'center',
+              pb: 2,
+            }}
+          >
+            <Typography variant="h1" fontWeight="xl" fontSize={40}>
+              Bem vindo
+            </Typography>
+            <Typography variant="h1" fontWeight="xl" fontSize={30} sx={{ display: { xs: 'none', sm: 'inline-flex' } }}>
+              Nos da Gabriel Do Cell estamos muito felizes em te receber
+            </Typography>
+            <Typography variant="h1" fontWeight="xl" sx={{ display: { sm: 'none' } }}>
+              Nos da GabrielDC estamos muito felizes em te receber
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              height: '100%',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Typography variant="h2" fontWeight="xl">
+              Aqui você encontra os melhores produtos do mercado
+            </Typography>
+            <Typography variant="h2" fontWeight="xl">
+              Aproveite e faça seu cadastro para receber nossas promoções
+            </Typography>
+            <Typography variant="h2" fontWeight="xl">
+              Mas apenas quando estiver tudo pronto
+            </Typography>
+            <Typography variant="h2" fontWeight="xl">
+              No momento estamos em desenvolvimento...
+            </Typography>
+          </Box>
+        </Layout.Content>
       </Layout.Root>
     </CssVarsProvider >
   )

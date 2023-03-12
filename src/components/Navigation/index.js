@@ -128,9 +128,7 @@ export default function FeedNav() {
         >
           {browseMenu ? menus.Browse.map((item) => (
             <ListItem>
-              <ListItemButton
-                onClick={() => navigate(item.href)}
-              >
+              <ListItemButton onClick={() => navigate(item.href)}>
                 <ListItemDecorator sx={listItemDecorator.Feed}>
                   {item.icon}
                 </ListItemDecorator>
