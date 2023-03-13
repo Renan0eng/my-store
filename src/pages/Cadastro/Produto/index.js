@@ -18,10 +18,13 @@ import LoginIcon from '@mui/icons-material/Login';
 
 // custom
 import { useNavigate } from 'react-router-dom';
-import theme, { Theme } from '../../constants/theme';
-import Layout from '../../components/Layout';
-import Navigation from '../../components/Navigation';
-import Menu from '../../components/Menu';
+import theme, { Theme } from '../../../constants/theme';
+import Layout from '../../../components/Layout';
+import Navigation from '../../../components/Navigation';
+import Menu from '../../../components/Menu';
+import ImagePicker from '../../../components/ImagePicker';
+import Quill from '../../../components/Quill';
+import Preview from '../../../components/Preview';
 
 function ColorSchemeToggle() {
   const { mode, setMode } = useColorScheme();
@@ -61,6 +64,9 @@ export default function FeedExample() {
   const [everythingMenu, setEverythingMenu] = React.useState(false);
   const [admin, setAdmin] = React.useState(true);
 
+  const [files, setFiles] = React.useState([]);
+
+  const [value, setValue] = React.useState('');
 
   return (
     <CssVarsProvider disableTransitionOnChange theme={theme}>
@@ -156,11 +162,6 @@ export default function FeedExample() {
                     active: true,
                     href: '/',
                   },
-                  {
-                    label: 'Produto',
-                    active: false,
-                    href: '/cadastro/produto',
-                  },
                 ]}
               />}
             <ColorSchemeToggle />
@@ -199,37 +200,9 @@ export default function FeedExample() {
               pb: 2,
             }}
           >
-            <Typography variant="h1" fontWeight="xl" fontSize={40}>
-              Bem vindo
-            </Typography>
-            <Typography variant="h1" fontWeight="xl" fontSize={30} sx={{ display: { xs: 'none', sm: 'inline-flex' } }}>
-              Nos da Gabriel Do Cell estamos muito felizes em te receber
-            </Typography>
-            <Typography variant="h1" fontWeight="xl" sx={{ display: { sm: 'none' } }}>
-              Nos da GabrielDC estamos muito felizes em te receber
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              height: '100%',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Typography variant="h2" fontWeight="xl">
-              Aqui você encontra os melhores produtos do mercado
-            </Typography>
-            <Typography variant="h2" fontWeight="xl">
-              Aproveite e faça seu cadastro para receber nossas promoções
-            </Typography>
-            <Typography variant="h2" fontWeight="xl">
-              Mas apenas quando estiver tudo pronto
-            </Typography>
-            <Typography variant="h2" fontWeight="xl">
-              No momento estamos em desenvolvimento...
-            </Typography>
+            <ImagePicker setFiles={setFiles} files={files} />
+            <Quill setValue={setValue} value={value} />
+            <Preview value={value} Images={files} />
           </Box>
         </Layout.Content>
       </Layout.Root>

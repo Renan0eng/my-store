@@ -8,7 +8,8 @@ import ListItem from '@mui/joy/ListItem';
 import ListItemButton from '@mui/joy/ListItemButton';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
-import HomeIcon from '@mui/icons-material/Home';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import AddBusinessOutlinedIcon from '@mui/icons-material/AddBusinessOutlined';
 
 // Icons import
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -21,66 +22,34 @@ export default function FeedNav() {
       {
         label: 'Home',
         href: '/',
-        icon: <HomeIcon fontSize="small" color="primary" />,
+        icon: <HomeOutlinedIcon fontSize="small" color="primary" />,
+      },
+      {
+        label: 'Cadastro de Produto',
+        href: '/cadastro/produto',
+        icon: <AddBusinessOutlinedIcon fontSize="small" color="primary" />,
       },
     ]
   }
 
   React.useEffect(() => {
 
-  if(!sessionStorage.getItem('user')){
-    setMenus({
-      Browse: [
-        {
-          label: 'Home',
-          href: '/',
-          icon: <HomeIcon fontSize="small" color="primary" />,
-        },
-        // {
-        //   label: 'Team',
-        //   href: '/team',
-        //   icon: <DraftsRoundedIcon fontSize="small" color="primary" />,
-        // },
-      ],
-      Tags: [
-        {
-          label: 'Personal',
-          href: '/personal',
-          bgcolor: 'primary.100',
-        },
-        {
-          label: 'Work',
-          href: '/work',
-          bgcolor: 'danger.300',
-        },
-        {
-          label: 'Family',
-          href: '/family',
-          bgcolor: 'success.300',
-        },
-        {
-          label: 'Friends',
-          href: '/friends',
-          bgcolor: 'warning.300',
-        },
-        {
-          label: 'Travel',
-          href: '/travel',
-          bgcolor: 'info.300',
-        },
-        {
-          label: 'Holidays',
-          href: '/holidays',
-          bgcolor: 'neutral.300',
-        },
-        {
-          label: 'Photos',
-          href: '/photos',
-          bgcolor: 'primary.300',
-        },
-      ]
-    })
-  }
+    if (!sessionStorage.getItem('user')) {
+      setMenus({
+        Browse: [
+          {
+            label: 'Home',
+            href: '/',
+            icon: <HomeOutlinedIcon fontSize="small" color="primary" />,
+          },
+          {
+            label: 'Cadastro de Produto',
+            href: '/cadastro/produto',
+            icon: <AddBusinessOutlinedIcon fontSize="small" color="primary" />,
+          },
+        ],
+      })
+    }
 
   }, []);
   const [menus, setMenus] = React.useState(Menus);
@@ -140,49 +109,49 @@ export default function FeedNav() {
         </List>
       </ListItem>
       {sessionStorage.getItem('user') &&
-      <ListItem nested sx={{ mt: 2 }}>
-        <ListSubheader>
-          config
-          <IconButton
+        <ListItem nested sx={{ mt: 2 }}>
+          <ListSubheader>
+            config
+            <IconButton
+              size="sm"
+              variant="plain"
+              color="primary"
+              sx={{ '--IconButton-size': '24px', ml: 'auto' }}
+              onClick={(e) => {
+                e.preventDefault();
+                if (!configMenu) {
+                  setConfigMenu(true);
+                } else {
+                  setConfigMenu(false);
+                }
+              }}
+            >
+              <KeyboardArrowDownRoundedIcon fontSize="small" color="primary" />
+            </IconButton>
+          </ListSubheader>
+          <List
+            aria-labelledby="nav-list-tags"
             size="sm"
-            variant="plain"
-            color="primary"
-            sx={{ '--IconButton-size': '24px', ml: 'auto' }}
-            onClick={(e) => {
-              e.preventDefault();
-              if (!configMenu) {
-                setConfigMenu(true);
-              } else {
-                setConfigMenu(false);
-              }
+            sx={{
+              '--List-decorator-size': '32px',
+              '& .JoyListItemButton-root': { p: '8px' },
             }}
           >
-            <KeyboardArrowDownRoundedIcon fontSize="small" color="primary" />
-          </IconButton>
-        </ListSubheader>
-        <List
-          aria-labelledby="nav-list-tags"
-          size="sm"
-          sx={{
-            '--List-decorator-size': '32px',
-            '& .JoyListItemButton-root': { p: '8px' },
-          }}
-        >
-          {configMenu &&
-            <ListItem>
-              <ListItemButton
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                <ListItemDecorator>
-                  <LogoutIcon fontSize="small" color="primary" />
-                </ListItemDecorator>
-                <ListItemContent>Logout</ListItemContent>
-              </ListItemButton>
-            </ListItem>}
-        </List>
-      </ListItem>}
+            {configMenu &&
+              <ListItem>
+                <ListItemButton
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
+                  <ListItemDecorator>
+                    <LogoutIcon fontSize="small" color="primary" />
+                  </ListItemDecorator>
+                  <ListItemContent>Logout</ListItemContent>
+                </ListItemButton>
+              </ListItem>}
+          </List>
+        </ListItem>}
     </List>
   );
 }
